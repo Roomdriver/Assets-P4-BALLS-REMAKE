@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        player.SetActive(false);
+        player.SetActive(true);
     }
 
     // Update is called once per frame
