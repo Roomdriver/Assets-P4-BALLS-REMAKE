@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject Enemy, PowerUp, PowerUpIndicator;
-    public int num;
+    
     void Start()
     {
         
