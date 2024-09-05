@@ -34,11 +34,11 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) //TODO
     {
             
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //TODO
     {
             
     }
