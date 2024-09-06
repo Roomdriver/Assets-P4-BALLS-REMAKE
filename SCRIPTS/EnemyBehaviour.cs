@@ -30,7 +30,14 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void EnemyFollowPlayer()
     {
-        transform.LookAt(player.transform.position);
-        rb.AddForce(transform.forward);  
+        if (player.transform.position.y > -1)
+        {
+            transform.LookAt(player.transform.position);
+            rb.AddForce(transform.forward);
+        }
+        else 
+        { 
+            rb.AddForce(transform.forward*0);
+        }
     }
 }

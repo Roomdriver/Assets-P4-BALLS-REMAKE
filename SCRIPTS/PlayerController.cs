@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed=2;
+    public float speed=1;
     Rigidbody rb;
     public GameObject focalGameObject;
     public Transform focal;
@@ -29,9 +30,9 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerIsDead()
     {
-        if (transform.position.y<-3)
+        if (transform.position.y<-10)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("Prototype 4");
         }
     }
     private void OnCollisionEnter(Collision collision) //TODO

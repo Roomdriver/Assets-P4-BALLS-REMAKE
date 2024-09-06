@@ -7,13 +7,13 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemy, powerUp, powerUpIndicator;
     public int enemyWaveCounter;
     public List<GameObject> enemyList;
+    public bool powerUpIsInScene=false;
     
     void Start()
     {
         enemyWaveCounter = 1;
         enemyList = new List<GameObject>();
-        StartCoroutine(SpawnEnemyWave());
-        Debug.Log(enemyList.Count);
+        StartCoroutine(SpawnEnemyWave());        
     }
 
     void Update()
@@ -21,8 +21,7 @@ public class SpawnManager : MonoBehaviour
         if (enemyList.Count == 0 )
         {
             StartCoroutine(SpawnEnemyWave());
-        }
-        Debug.Log(enemyList.Count);
+        }        
     }
     /// <summary>
     /// spawn 1 enenmy at a random position
@@ -37,8 +36,25 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }        
         enemyWaveCounter++;
+        SpawnPowerUp();
     }
-
+    /// <summary>
+    /// if no power up is on scene
+    /// spawn 1 powerup at a random position
+    /// </summary>
+    void SpawnPowerUp()
+    {
+        if (!powerUpIsInScene)
+        {
+            Vector3 randPos = GenerateRandomVector();
+            Instantiate(powerUp, randPos, Quaternion.identity);
+            powerUpIsInScene = true;
+        }
+    }
+    /// <summary>
+    /// Generates and returns each time is called a random vector3
+    /// </summary>
+    /// <returns></returns>
     Vector3 GenerateRandomVector()
     {
         int randNumX = Random.Range(8, -8);
