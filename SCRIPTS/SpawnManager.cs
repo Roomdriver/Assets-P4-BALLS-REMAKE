@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemy, powerUp, powerUpIndicator;
+    public GameObject player,enemy, powerUp;
     public int enemyWaveCounter;
     public List<GameObject> enemyList;
     public bool powerUpIsInScene=false;
+    PlayerController playerController;
     
     void Start()
     {
         enemyWaveCounter = 1;
         enemyList = new List<GameObject>();
+        playerController=GameObject.Find("Player").GetComponent<PlayerController>();
         StartCoroutine(SpawnEnemyWave());        
     }
 
@@ -50,15 +53,16 @@ public class SpawnManager : MonoBehaviour
             Instantiate(powerUp, randPos, Quaternion.identity);
             powerUpIsInScene = true;
         }
-    }
+    }    
+    
     /// <summary>
     /// Generates and returns each time is called a random vector3
     /// </summary>
     /// <returns></returns>
     Vector3 GenerateRandomVector()
     {
-        int randNumX = Random.Range(8, -8);
-        int randNumY = Random.Range(8, -8);
+        int randNumX = UnityEngine.Random.Range(8, -8);
+        int randNumY = UnityEngine.Random.Range(8, -8);
         Vector3 randomPos=new Vector3(randNumX,0,randNumY);
         return randomPos;
     }
